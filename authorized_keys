@@ -1,0 +1,3 @@
+# Add an authorized key to access the system after installation. The root password is set as a hash of 'date +%s'
+# This password can be changed after ssh-ing in.
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC+83ejBhbnzBKsUsnqo/YZEa4MpuZPt9unvThZHbIGTGGoY5u9Y1wDWFDyQu4urPSr8Oxo3cxgNSS/gvbQgLyVZaMewSTa4rSNNYMkjd5qYwOYjMBc5w33BvuVwpWRHxDV7XKI5DVLZs7CaUwgwVt/POlVhAVUEtdcftvvKNC4ct9PQ7FcnzVzTrjrHey3ko25K4X41AyCzyhcTbpYekc0goipml/GH7k0qwpS9r8ip1sgBKGJWWT3lVlZ85ZKBdJC6gerHDoBD1k77yBAKs//Ki1hM9RL0s71YK1KYzlOxLzWf1FbUVMNAtxK3dqwSSOPGadCd4h03RgSYeiHYtMp arch@iambartlett.com
