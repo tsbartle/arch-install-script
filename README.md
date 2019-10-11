@@ -3,7 +3,7 @@ Scripts to automate an Arch installation, customized with my default preferences
 
 * UEFI
 * LUKS Encryption
-* LVM partioning
+* LVM partitioning
 * User account creation
 * ssh - remove root login, disallow pw login
 * Randomize root password
