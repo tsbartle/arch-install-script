@@ -242,7 +242,7 @@ function makepkg_set() {
 
         # Set compression to lzo for speed
         cp /etc/makepkg.conf{,.part2}
-        cat /etc/makepkg.conf.part2 | sed 's/PKGEXT='.pkg.tar.gz'/PKGEXT='.pkg.tar.lzo'/' > /etc/makepkg.conf
+        cat /etc/makepkg.conf.part2 | sed "s/PKGEXT='.pkg.tar.gz'/PKGEXT='.pkg.tar.lzo'/" > /etc/makepkg.conf
         
         # Remove temp copies
         rm -rf /etc/makepkg.conf.orig /etc/makepkg.conf.part1 /etc/makepkg.conf.part2
