@@ -228,14 +228,14 @@ function edit_sshd() {
 
     }
 
-# Set MAKEFLAGS
+# Config makepkg.conf
 function makepkg_set() {
         
         # Get CPU count, set compression type
 
         # Enter CPU count into makepkg.conf
         cp /etc/makepkg.conf{,.orig}
-        cat /etc/makepkg.conf.orig | sed ‘s/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T '$(nproc)' -z -)/g’ > /etc/makepkg.conf
+        cat /etc/makepkg.conf.orig | sed "s/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T '$(nproc)' -z -)/g" > /etc/makepkg.conf
 
         # Uncomment MAKEFLAGS, set jflag
         cp /etc/makepkg.conf{,.part1}
