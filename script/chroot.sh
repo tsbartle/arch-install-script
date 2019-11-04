@@ -228,6 +228,29 @@ function edit_sshd() {
 
     }
 
+# Set MAKEFLAGS
+function makepkg_set() {
+        
+        # Get CPU count, set compression type
+
+        # Enter CPU count into makepkg.conf
+        cp /etc/makepkg.conf{,.orig}
+        cat /etc/makepkg.conf.orig | sed ‘s/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T '$(nproc)' -z -)/g’ > /etc/makepkg.conf
+
+        # Uncomment MAKEFLAGS, set jflag
+        cp /etc/makepkg.conf{,.part1}
+        cat /etc/makepkg.conf.part1 | sed ‘s/#MAKEFLAGS=”-j2"/MAKEFLAGS=”-j'$(($(nproc) + 1))'"/g’ > /etc/makepkg.conf
+
+        # Set compression to lzo for speed
+        cp /etc/makepkg.conf{,.part2}
+        cat /etc/makepkg.conf.part2 | sed ‘s/PKGEXT='.pkg.tar.gz'/PKGEXT='.pkg.tar.lzo'/g’ > /etc/makepkg.conf
+        
+        # Remove temp copies
+        rm -rf /etc/makepkg.conf.orig /etc/makepkg.conf.part1 /etc/makepkg.conf.part2
+
+    }
+
+
 
 function clean_pacman() {
 #    pacman -Rs gcc groff man-db git make guile binutils man-pages nano --noconfirm
@@ -276,6 +299,7 @@ function main() {
     run_section "Add primary user to sudoers" "edit_sudoers"
     run_section "Creating Swapfile" "create_swapfile"
     run_section "Installing Core Packages" "pacman -S vim base-devel openssh git python --noconfirm"
+    run_section "Configure makepkg.conf" "makepkg_set"
     run_section "Enabling Core Services" "systemctl enable sshd dhcpcd"
     run_section "Edit sshd_config - no root login; disable password logins" "edit_sshd"
     run_section "Cleaning Up Pacman" "clean_pacman"
