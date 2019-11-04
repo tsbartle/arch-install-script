@@ -234,15 +234,15 @@ function makepkg_set() {
 
         # Enter CPU count into makepkg.conf
         cp /etc/makepkg.conf{,.orig}
-        cat /etc/makepkg.conf.orig | sed "s/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T '$(nproc)' -z -)/g" > /etc/makepkg.conf
+        cat /etc/makepkg.conf.orig | sed 's/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T '$(nproc)' -z -)/' > /etc/makepkg.conf
 
         # Uncomment MAKEFLAGS, set jflag
         cp /etc/makepkg.conf{,.part1}
-        cat /etc/makepkg.conf.part1 | sed ‘s/#MAKEFLAGS=”-j2"/MAKEFLAGS=”-j'$(($(nproc) + 1))'"/g’ > /etc/makepkg.conf
+        cat /etc/makepkg.conf.part1 | sed ‘s/#MAKEFLAGS=”-j2"/MAKEFLAGS=”-j'$(($(nproc) + 1))'"/’ > /etc/makepkg.conf
 
         # Set compression to lzo for speed
         cp /etc/makepkg.conf{,.part2}
-        cat /etc/makepkg.conf.part2 | sed ‘s/PKGEXT='.pkg.tar.gz'/PKGEXT='.pkg.tar.lzo'/g’ > /etc/makepkg.conf
+        cat /etc/makepkg.conf.part2 | sed ‘s/PKGEXT='.pkg.tar.gz'/PKGEXT='.pkg.tar.lzo'/’ > /etc/makepkg.conf
         
         # Remove temp copies
         rm -rf /etc/makepkg.conf.orig /etc/makepkg.conf.part1 /etc/makepkg.conf.part2
