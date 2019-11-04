@@ -223,7 +223,7 @@ function update_mirrors() {
 # ARGS: None
 # OUTS: None
 function bootstrap_arch() {
-    pacstrap /mnt base base-devel git sudo efibootmgr wpa_supplicant dialog intel-ucode vim
+    pacstrap -i /mnt base base-devel git sudo efibootmgr wpa_supplicant dialog intel-ucode vim lzop
     genfstab -U -p /mnt > /mnt/etc/fstab
 
     # Copy chroot.sh to chrooted environment
@@ -259,7 +259,7 @@ function do_chroot() {
     fi
 
     # Chroot in, pass arguments to the chroot.sh script
-    arch-chroot /mnt /root/arch-install-script/script/chroot.sh$extra_args -v $device -f "$prefix" -n $hostname -u $user -s $swap
+    arch-chroot /mnt /root/arch-install-script/script/chroot.sh $extra_args -v $device -f "$prefix" -n $hostname -u $user -s $swap
 
     # Remove the installer script directory
     rm /mnt/root/arch-install-script -rf

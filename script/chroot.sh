@@ -128,7 +128,6 @@ function install_bootloader() {
         dd bs=512 count=4 if=/dev/random of=/root/archlvm.keyfile iflag=fullblock
         chmod 000 /root/archlvm.keyfile
 
-
         cryptsetup -v luksAddKey ${device}${prefix}4 /root/archlvm.keyfile
 
         cp /etc/mkinitcpio.conf{,.orig}
@@ -146,7 +145,7 @@ function install_bootloader() {
         touch /boot/loader/loader.conf
         touch /boot/loader/entries/arch.conf
 
-# Write in loader confi
+# Write in loader config
 cat >> /boot/loader/loader.conf <<LOADER
 default arch
 timeout 5
