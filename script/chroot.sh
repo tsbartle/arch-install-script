@@ -297,7 +297,7 @@ function main() {
     run_section "Initaling primary User" "init_user"
     run_section "Add primary user to sudoers" "edit_sudoers"
     run_section "Creating Swapfile" "create_swapfile"
-    run_section "Installing Core Packages" "pacman -S neovim openssh git python  --noconfirm"
+    run_section "Installing Core Packages" "pacman -S neovim git python  --noconfirm"
     run_section "Configure makepkg.conf" "makepkg_set"
     run_section "Enabling Core Services" "systemctl enable sshd dhcpcd"
     run_section "Edit sshd_config - no root login; disable password logins" "edit_sshd"
