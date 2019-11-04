@@ -223,7 +223,7 @@ function update_mirrors() {
 # ARGS: None
 # OUTS: None
 function bootstrap_arch() {
-    pacstrap /mnt linux base base-devel git sudo efibootmgr wpa_supplicant dialog intel-ucode vim lzop
+    pacstrap /mnt base base-devel linux linux-firmware git sudo efibootmgr wpa_supplicant dialog intel-ucode neovim lzop
     genfstab -U -p /mnt > /mnt/etc/fstab
 
     # Copy chroot.sh to chrooted environment
