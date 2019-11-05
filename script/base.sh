@@ -154,7 +154,7 @@ function print_vars() {
 # OUTS: None
  clean_disk() {
     swapoff -a
-    wipefs -a $device
+    wipefs -af $device
     dd if=/dev/zero of=$device bs=512 count=1 conv=notrunc
 }
 
