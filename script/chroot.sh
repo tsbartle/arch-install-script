@@ -242,7 +242,7 @@ function makepkg_set() {
 
         # Set compression to lzo for speed
         cp /etc/makepkg.conf{,.part2}
-        cat /etc/makepkg.conf.part2 | sed "s/PKGEXT='.pkg.tar.gz'/PKGEXT='.pkg.tar.lzo'/" > /etc/makepkg.conf
+        cat /etc/makepkg.conf.part2 | sed 's/PKGEXT='.pkg.tar.xz'/PKGEXT='.pkg.tar.lzo'/' > /etc/makepkg.conf
         
         # Remove temp copies
         rm -rf /etc/makepkg.conf.orig /etc/makepkg.conf.part1 /etc/makepkg.conf.part2
@@ -297,7 +297,7 @@ function main() {
     run_section "Initaling primary User" "init_user"
     run_section "Add primary user to sudoers" "edit_sudoers"
     run_section "Creating Swapfile" "create_swapfile"
-    run_section "Installing Core Packages" "pacman -S neovim git python  --noconfirm"
+    run_section "Installing Core Packages" "pacman -Syu vim git python --noconfirm"
     run_section "Configure makepkg.conf" "makepkg_set"
     run_section "Enabling Core Services" "systemctl enable sshd dhcpcd"
     run_section "Edit sshd_config - no root login; disable password logins" "edit_sshd"
