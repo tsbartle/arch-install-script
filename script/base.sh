@@ -223,7 +223,7 @@ function update_mirrors() {
 # ARGS: None
 # OUTS: None
 function bootstrap_arch() {
-    pacstrap /mnt base base-devel linux linux-firmware sudo efibootmgr wpa_supplicant dialog intel-ucode lzop lvm2 openssh dhcpcd
+    pacstrap /mnt base base-devel linux linux-firmware sudo efibootmgr wpa_supplicant dialog intel-ucode lzop lvm2 openssh dhcpc archlinux-keyringd
     genfstab -U -p /mnt > /mnt/etc/fstab
 
     # Copy chroot.sh to chrooted environment
