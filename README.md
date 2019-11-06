@@ -10,7 +10,7 @@ Scripts to automate an Arch installation, customized with my default preferences
 * Prompt for user password
 * Add public key to "authorized_keys" of User account
 
-Tested with ArchISO 2019.11.01
+_Tested with ArchISO 2019.11.01_
 
 ## Usage
 
