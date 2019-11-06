@@ -50,9 +50,9 @@ function parse_params() {
                 shift
                 do_pause=true
                 ;;
-            -nc|--no-colour)
+            -nc|--no-color)
                 shift
-                no_colour=true
+                no_color=true
                 ;;
             -n|--hostname)
                 shift
@@ -288,7 +288,7 @@ function main() {
     var_init "$@"
     parse_params "$@"
     cron_init
-    colour_init
+    color_init
 
     run_section "Initalizing locales" "init_locales"
     run_section "Setting Hostname" "init_host"

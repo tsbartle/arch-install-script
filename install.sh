@@ -38,7 +38,7 @@ function main() {
     var_init "$@"
     parse_params "$@"
     cron_init
-    colour_init
+    color_init
 
     if [ "$no_input" = false ]; then
         run_section "Configure" "get_params $script_params"
