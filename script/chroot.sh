@@ -155,7 +155,7 @@ LOADER
 cat >> /boot/loader/entries/arch.conf <<ARCH
 default arch
 efi \vmlinuz-linux
-options initrd=\initramfs-linux.img cryptdevice=/dev/sda4:archvg root=/dev/mapper/archvg-rootlv ro
+options initrd=\initramfs-linux.img cryptdevice=${device}${prefix}4:archvg root=/dev/mapper/archvg-rootlv ro
 ARCH
 
     else
