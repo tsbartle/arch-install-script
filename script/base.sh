@@ -205,13 +205,13 @@ function partition_disk() {
 
     ## Create filesystems for logical volumes and boot ##
     # boot
-    mkfs.vfat -F32 /dev/sda2
+    mkfs.vfat -F32 ${device}${prefix}2
     mkfs.ext4 /dev/mapper/archvg-rootlv
 
     # Mount the partitions to /mnt for installation
     mount /dev/mapper/archvg-rootlv /mnt
     mkdir -p /mnt/boot
-    mount -t vfat /dev/sda2 /mnt/boot
+    mount -t vfat ${device}${prefix}2 /mnt/boot
 }
 
 function update_mirrors() {
@@ -277,7 +277,7 @@ function clean_up() {
     rm /mnt/zero.small.file
     rm /mnt/zero.file
     if [ "$do_swap" = true ]; then
-        swapoff /dev/sda2
+        swapoff ${device}${prefix}2
     fi
 }
 
