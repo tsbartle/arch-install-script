@@ -135,7 +135,7 @@ function install_bootloader() {
         cp /etc/mkinitcpio.conf{,.part1}
         cat /etc/mkinitcpio.conf.part1 | sed 's/HOOKS=.*/HOOKS=\(base udev autodetect block encrypt lvm2 resume filesystems keyboard fsck shutdown\)/' > /etc/mkinitcpio.conf
         cp /etc/mkinitcpio.conf{,.part2}
-        cat /etc/mkinitcpio.conf.part2 | sed 's/MODULES=.*/MODULES=\(vfat ext4 dm_mod dm_crypt aes_x86_64 i915\)/' > /etc/mkinitcpio.conf
+        cat /etc/mkinitcpio.conf.part2 | sed 's/MODULES=.*/MODULES=\(vfat ext4 dm_mod dm_crypt i915\)/' > /etc/mkinitcpio.conf
         mkinitcpio -p linux
 
     fi
