@@ -249,26 +249,26 @@ function makepkg_set() {
 
     }
 
-function install_yay() {
-
+function grab_yay() {
+    # script to install yay after initial install of OS
     # mkdir for source files
-    mkdir /home/$user/sources
+    touch /home/$user/grab_yay.sh
+
+    echo "mkdir /home/$USER/sources" >> /home/$user/grab_yay.sh
 
     # cd into sources
-    cd /home/$user/sources
-
+    echo "cd /home/$USER/sources" >> /home/$user/grab_yay.sh
     # clone yay repo
-    git clone https://aur.archlinux.org/yay.git
+    echo "git clone https://aur.archlinux.org/yay.git" >> /home/$user/grab_yay.sh
 
     # cd into  yay
-    cd yay
+    echo "cd yay" >> /home/$user/grab_yay.sh
 
     # makepkg
-    makepkg -si
+    echo "makepkg -si" >> /home/$user/grab_yay.sh
 
     # save initial settings
-    yay - editmenu - nodiffmenu - save
-
+    echo "yay - editmenu - nodiffmenu - save" >> /home/$user/grab_yay.sh
 }
 
 
@@ -321,7 +321,7 @@ function main() {
     run_section "Creating Swapfile" "create_swapfile"
     run_section "Installing Core Packages" "pacman -Syu vim git python --noconfirm"
     run_section "Configure makepkg.conf" "makepkg_set"
-    run_section "Compile and intall yay" "install_yay"
+    run_section "Compile and intall yay" "grab_yay"
     run_section "Enabling Core Services" "systemctl enable sshd dhcpcd"
     run_section "Edit sshd_config - no root login; disable password logins" "edit_sshd"
     run_section "Cleaning Up Pacman" "clean_pacman"
