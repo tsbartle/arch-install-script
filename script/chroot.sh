@@ -229,7 +229,7 @@ function edit_sshd() {
 
 # Config makepkg.conf
 function makepkg_set() {
-        
+
         # Get CPU count, set compression type
 
         # Enter CPU count into makepkg.conf
@@ -243,11 +243,33 @@ function makepkg_set() {
         # Set compression to lzo for speed
         cp /etc/makepkg.conf{,.part2}
         cat /etc/makepkg.conf.part2 | sed "s/PKGEXT='.pkg.tar.xz'/PKGEXT='.pkg.tar.lzo'/" > /etc/makepkg.conf
-        
+
         # Remove temp copies
         rm -rf /etc/makepkg.conf.orig /etc/makepkg.conf.part1 /etc/makepkg.conf.part2
 
     }
+
+function install_yay() {
+
+    # mkdir for source files
+    mkdir /home/$user/sources
+
+    # cd into sources
+    cd /home/$user/sources
+
+    # clone yay repo
+    git clone https://aur.archlinux.org/yay.git
+
+    # cd into  yay
+    cd yay
+
+    # makepkg
+    makepkg -si
+
+    # save initial settings
+    yay - editmenu - nodiffmenu - save
+
+}
 
 
 
@@ -299,6 +321,7 @@ function main() {
     run_section "Creating Swapfile" "create_swapfile"
     run_section "Installing Core Packages" "pacman -Syu vim git python --noconfirm"
     run_section "Configure makepkg.conf" "makepkg_set"
+    run_section "Compile and intall yay" "install_yay"
     run_section "Enabling Core Services" "systemctl enable sshd dhcpcd"
     run_section "Edit sshd_config - no root login; disable password logins" "edit_sshd"
     run_section "Cleaning Up Pacman" "clean_pacman"
