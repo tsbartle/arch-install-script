@@ -254,10 +254,10 @@ function grab_yay() {
     # mkdir for source files
     touch /home/$user/grab_yay.sh
 
-    echo "mkdir /home/$USER/sources" >> /home/$user/grab_yay.sh
+    echo "mkdir /home/$user/sources" >> /home/$user/grab_yay.sh
 
     # cd into sources
-    echo "cd /home/$USER/sources" >> /home/$user/grab_yay.sh
+    echo "cd /home/$user/sources" >> /home/$user/grab_yay.sh
     # clone yay repo
     echo "git clone https://aur.archlinux.org/yay.git" >> /home/$user/grab_yay.sh
 
