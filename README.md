@@ -10,7 +10,7 @@ Scripts to automate an Arch installation, customized with my default preferences
 * Prompt for user password
 * Add public key to "authorized_keys" of User account
 
-_Tested with ArchISO 2019.12.01_
+_Tested with ArchISO 2021.2.01_
 
 ## Usage
 
@@ -19,9 +19,14 @@ Boot to ArchISO, then:
 ```bash
 curl -sL https://iambartlett.com/arch > i
 source i
+```
+###nvme
+```
+./install.sh -f p
+```
+
+###sda
+```
 ./install.sh
 ```
 
-## Post Install Script
-
-**Coming Soon**
