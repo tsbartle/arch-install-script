@@ -319,7 +319,8 @@ function main() {
     run_section "Initaling primary User" "init_user"
     run_section "Add primary user to sudoers" "edit_sudoers"
     run_section "Creating Swapfile" "create_swapfile"
-    run_section "Installing Core Packages" "pacman -Syu vim git python --noconfirm"
+    run_section "Installing Core Packages" "pacman -Syu vim git python
+    networkmanager  --noconfirm"
     run_section "Configure makepkg.conf" "makepkg_set"
     run_section "Compile and intall yay" "grab_yay"
     run_section "Enabling Core Services" "systemctl enable sshd dhcpcd"
@@ -328,7 +329,6 @@ function main() {
 }
 
 
-# Make it rain
+# It's go time!
 main "$@"
 
-# vim: syntax=sh cc=80 tw=79 ts=4 sw=4 sts=4 et sr
