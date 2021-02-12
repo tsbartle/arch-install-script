@@ -1,6 +1,10 @@
 function var_init() {
-    readonly mirrorlist_url="https://www.archlinux.org/mirrorlist/?country=US&protocol=http&protocol=https&ip_version=4&use_mirror_status=on"
 
+    # Arch mirror list for USA
+    #readonly mirrorlist_url="https://www.archlinux.org/mirrorlist/?country=US&protocol=http&protocol=https&ip_version=4&use_mirror_status=on"
+    readonly mirrorlist_url="https://archlinux.org/mirrorlist/?country=US"
+
+    # Defaults
     hostname="hal-arch"
     do_efi=true
     do_pause=false
@@ -8,8 +12,8 @@ function var_init() {
     no_input=false
     do_cleanup=false
     dry_run=false
-    device="/dev/sda"
-    prefix=""
+    device="/dev/nvme0n1"
+    prefix="" # "p" for/dev/nvme0n1p1 as an example
     do_wipe=false
     do_encrypt=true
     user="tsb"
