@@ -20,12 +20,12 @@ Boot to ArchISO, then:
 curl -sL https://iambartlett.com/arch > i
 source i
 ```
-###nvme
+### nvme install
 ```
 ./install.sh -f p
 ```
 
-###sda
+### sda install
 ```
 ./install.sh
 ```
