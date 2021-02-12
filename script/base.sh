@@ -1,7 +1,6 @@
 function var_init() {
 
     # Arch mirror list for USA
-    #readonly mirrorlist_url="https://www.archlinux.org/mirrorlist/?country=US&protocol=http&protocol=https&ip_version=4&use_mirror_status=on"
     readonly mirrorlist_url="https://archlinux.org/mirrorlist/?country=US"
 
     # Defaults

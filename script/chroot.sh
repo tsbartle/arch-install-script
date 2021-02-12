@@ -21,14 +21,14 @@ EOF
 
 
 function var_init() {
-    readonly mirrorlist_url="https://www.archlinux.org/mirrorlist/?country=US&protocol=http&protocol=https&ip_version=4&use_mirror_status=on"
+    readonly mirrorlist_url="https://archlinux.org/mirrorlist/?country=US"
 
     hostname="hal-arch"
     do_efi=true
     do_pause=false
     do_encrypt=true
-    device="/dev/sda"
-    prefix=""
+    device="/dev/nvme0n1"
+    prefix="" # "p" for/dev/nvme0n1p1 as an example
     user="tsb"
 }
 
@@ -169,7 +169,7 @@ function init_root() {
     echo "root:$passwd" | chpasswd
 }
 
-# Set user account and password to seconds since 1970
+# Prompt for user account password creation
 function init_user() {
     while true; do
         echo 'Enter a password for "'$user'":'
