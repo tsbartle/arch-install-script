@@ -6,9 +6,7 @@ set -o nounset          # Disallow expansion of unset variables
 set -o pipefail         # Use last non-zero exit code in a pipeline
 #set -o xtrace          # Trace the execution of the script (debug)
 
-# DESC: Usage help
-# ARGS: None
-# OUTS: None
+# Usage help
 function script_usage() {
     cat << EOF
 Usage:
@@ -33,9 +31,7 @@ function var_init() {
 }
 
 
-# DESC: Parameter parser
-# ARGS: $@ (optional): Arguments provided to the script
-# OUTS: Variables indicating command-line parameters and options
+# Parameter parser
 function parse_params() {
     local param
     while [[ $# -gt 0 ]]; do
@@ -228,9 +224,8 @@ function edit_sshd() {
     }
 
 # Config makepkg.conf
+# Get CPU count, set compression type
 function makepkg_set() {
-
-        # Get CPU count, set compression type
 
         # Enter CPU count into makepkg.conf
         cp /etc/makepkg.conf{,.orig}
@@ -249,8 +244,8 @@ function makepkg_set() {
 
     }
 
+# Create script to install yay after initial install of OS
 function grab_yay() {
-    # script to install yay after initial install of OS
     # mkdir for source files
     touch /home/$user/grab_yay.sh
 
@@ -297,9 +292,7 @@ function create_swapfile() {
 }
 
 
-# DESC: Main control flow
-# ARGS: $@ (optional): Arguments provided to the script
-# OUTS: None
+# Main control
 function main() {
     source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 
@@ -331,4 +324,3 @@ function main() {
 
 # It's go time!
 main "$@"
-

@@ -19,9 +19,7 @@ function var_init() {
 }
 
 
-# DESC: Parameter parser
-# ARGS: $@ (optional): Arguments provided to the script
-# OUTS: Variables indicating command-line parameters and options
+# Parameter parser
 function parse_params() {
     local param
     while [[ $# -gt 0 ]]; do
@@ -152,9 +150,7 @@ function print_vars() {
 }
 
 
-# DESC: Cleans any existing partitions for disk
-# ARGS: None
-# OUTS: None
+# Cleans any existing partitions for disk
  clean_disk() {
     swapoff -a
     wipefs -af $device
@@ -162,9 +158,7 @@ function print_vars() {
 }
 
 
-# DESC: Securely wipes a disk
-# ARGS: None
-# OUTS: None
+# Securely wipes a disk
 function wipe_disk() {
     cryptsetup open --type plain -d /dev/urandom $device to_be_wiped
     dd if=/dev/zero of=/dev/mapper/to_be_wiped status=progress || true
@@ -186,9 +180,7 @@ function setup_encrypt() {
 }
 
 
-# DESC: Partitions, formats and mounts disk
-# ARGS: None
-# OUTS: None
+# Partitions, formats and mounts disk
 function partition_disk() {
     os_partition="${device}${prefix}4"
     sgdisk -Z $device
@@ -222,9 +214,7 @@ function update_mirrors() {
 }
 
 
-# DESC: Initalizes /mnt so it can be chroot
-# ARGS: None
-# OUTS: None
+# Initalizes /mnt so it can be chroot
 function bootstrap_arch() {
     pacstrap /mnt base base-devel linux linux-firmware sudo efibootmgr wpa_supplicant dialog intel-ucode lzop lvm2 openssh dhcpcd archlinux-keyring
     genfstab -U -p /mnt > /mnt/etc/fstab
@@ -241,7 +231,7 @@ function bootstrap_arch() {
 }
 
 
-
+# Chroot
 function do_chroot() {
     extra_args=""
 
@@ -269,9 +259,7 @@ function do_chroot() {
 }
 
 
-# DESC: Removes cleans up disk to help compact (defrag/write 0)
-# ARGS: None
-# OUTS: None
+# Removes cleans up disk to help compact (defrag/write 0)
 function clean_up() {
     e4defrag $os_partition
     dd if=/dev/zero of=/mnt/zero.small.file bs=1024 count=102400
